@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'org.auto.web'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//  cucumber jars
+    implementation 'io.cucumber:cucumber-java:7.18.1'
+    implementation 'io.cucumber:cucumber-core:7.18.1'
+    implementation 'io.cucumber:cucumber-gherkin-messages:7.18.1'
+    implementation 'io.cucumber:cucumber-gherkin:7.18.1'
+    implementation 'io.cucumber:cucumber-plugin:7.18.1'
+    testImplementation 'io.cucumber:cucumber-junit:7.18.1'
+
+
+//  selenium jars
+    implementation 'org.seleniumhq.selenium:selenium-java:4.24.0'
+
+//restAssured
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
+//json
+    implementation 'org.json:json:20240303'
+//faker for data mocking
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+//log4j
+
+    implementation 'org.apache.logging.log4j:log4j-core:3.0.0-beta2'
+
+}
+
