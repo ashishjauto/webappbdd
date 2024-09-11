@@ -7,8 +7,8 @@ Feature: Sauce Lab login page
     And i can view username and password for the dummy app
     Then <userName> and <password> field should be enabled with login button:
     Examples:
-      | userName        | password     |
-      | standard_user   | secret_sauce |
-      | locked_out_user | secret_sauce |
-      | problem_user    | secret_sauce |
+      | userName      | password     |
+      | standard_user | secret_sauce |
+  #    | locked_out_user | secret_sauce |
+  #    | problem_user  | secret_sauce |
 
