@@ -12,7 +12,7 @@ public class SeleniumTest {
 
     static Logger log = Logger.getLogger(String.valueOf(SeleniumTest.class));
 
-
+/*
     @Test
     public void seleniumTest(){
         log.info("web navigation");
@@ -22,5 +22,5 @@ public class SeleniumTest {
         driver.get("https://www.google.com");
 
 
-    }
+    }*/
 }

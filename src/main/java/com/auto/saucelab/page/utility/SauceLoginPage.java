@@ -25,7 +25,7 @@ public class SauceLoginPage {
 
     public void navigation(WebDriver driver){
 
-        driver.navigate().to(sauceLabUrl);
+        driver.get(sauceLabUrl);
         driver.manage().window().maximize();
 
 
