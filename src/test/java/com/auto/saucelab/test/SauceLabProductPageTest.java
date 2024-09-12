@@ -5,6 +5,7 @@ import com.auto.saucelab.page.utility.SauceProuctPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import org.junit.After;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,15 +47,9 @@ public class SauceLabProductPageTest {
 
         inventoryList.forEach(webElement -> webElement.findElement(By.xpath("//button[contains(text(),'Add to cart')]")).click());
 
-        System.out.println("test");
-
-
-
-
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.textToBe(By.xpath("//*[contains(@class,'shopping_cart_badge')]"),
                         String.valueOf(inventoryList.size())));
-
 
 
         Assert.assertTrue(driver.findElement(By.xpath("//*[contains(@class,'shopping_cart_badge')]")).
@@ -64,40 +59,13 @@ public class SauceLabProductPageTest {
         driver.findElement(By.xpath("//*[contains(@class,'shopping_cart_badge')]")).click();
 
 
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[contains(@id,'checkout') and contains(text(),'Checkout')]")))) ;
-
-        driver.findElement(By.xpath("//button[contains(@id,'checkout') and contains(text(),'Checkout')]")).click();
-
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.id("first-name")))) ;
-
-         driver.findElement(By.id("first-name")).sendKeys("John");
-        driver.findElement(By.id("last-name")).sendKeys("Doe");
-
-        driver.findElement(By.id("postal-code")).sendKeys("90210");
+        sauceProuctPagePage.clickOnCheckout(driver);
+        sauceProuctPagePage.fillFormDetails(driver);
+        sauceProuctPagePage.getCartText(driver);
 
 
-        driver.findElement(By.id("continue")).click();
+        sauceProuctPagePage.clickonFinish(driver);
 
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.id("finish")))) ;
-
-
-        List<WebElement> elements = driver.findElements( By.xpath("//*[contains(@class,'cart_item') and contains(@data-test,'inventory-item')]"));
-
-      /*  elements.forEach(webElement -> System.out.println(webElement.
-                                                        findElement(By.xpath("//*[contains(@class,'inventory_item_price') and contains(@data-test,'inventory-item-price')]"))
-                                                        .getText()+" -->>  "+ webElement.
-                findElement(By.xpath("//*[contains(@class,'inventory_item_desc') and contains(@data-test,'inventory-item-desc')]"))+ " -->> "+
-                webElement.
-                        findElement(By.xpath("//*[contains(@class,'inventory_item_name') and contains(@data-test,'inventory_item_name')]"))
-
-        ));
-*/      elements.forEach(webElement -> System.out.println(webElement.getText()));
-
-
-        driver.findElement(By.id("finish")).click();
 
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOf(driver.findElement(By.id("back-to-products")))) ;
@@ -105,7 +73,11 @@ public class SauceLabProductPageTest {
 
 
 
-      //  driver.quit();
+
+    }
+    @After
+    public void quit(){
+        driver.quit();
     }
 
 
