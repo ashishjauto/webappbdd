@@ -22,64 +22,45 @@ public class SauceLabProductPageTest {
 
 
     private  WebDriver driver  ;
-   private SauceLoginPage sauceLoginPage=new SauceLoginPage();
+    private SauceLoginPage sauceLoginPage=new SauceLoginPage();
     private SauceProuctPage sauceProuctPagePage =new SauceProuctPage();
 
-    @Before
-    public void testInitiate(){
-        driver = new ChromeDriver();
 
-    }
 
     @Given("^When i navigate to sauce lab Product page$")
     public void when_i_navigate_to_sauce_lab_product_page() {
-        sauceLoginPage.navigation(driver);
-        sauceLoginPage.sendKeysToWebelement(driver,"standard_user","secret_sauce");
-        WebDriverWait waitforElement = new WebDriverWait(driver, Duration.ofSeconds(15));
-        waitforElement.until(wait->driver.findElement(By.className("app_logo")).isDisplayed());
+        sauceLoginPage.navigation();
+        sauceLoginPage.sendKeysToWebelement("standard_user","secret_sauce");
+
     }
 
     @And("^i can view list of product displayed for purchase$")
     public void i_can_view_list_of_product_displayed_for_purchase()   {
 
 
-        List<WebElement>inventoryList= sauceProuctPagePage.getInventoryList(driver);
-
-        inventoryList.forEach(webElement -> webElement.findElement(By.xpath("//button[contains(text(),'Add to cart')]")).click());
-
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.textToBe(By.xpath("//*[contains(@class,'shopping_cart_badge')]"),
-                        String.valueOf(inventoryList.size())));
+        List<WebElement>inventoryList= sauceProuctPagePage.getInventoryList();
 
 
-        Assert.assertTrue(driver.findElement(By.xpath("//*[contains(@class,'shopping_cart_badge')]")).
-                getText().equals(String.valueOf(inventoryList.size())));
+        sauceProuctPagePage.clickOnAddToCart();
 
 
-        driver.findElement(By.xpath("//*[contains(@class,'shopping_cart_badge')]")).click();
 
 
-        sauceProuctPagePage.clickOnCheckout(driver);
-        sauceProuctPagePage.fillFormDetails(driver);
-        sauceProuctPagePage.getCartText(driver);
 
 
-        sauceProuctPagePage.clickonFinish(driver);
+        sauceProuctPagePage.clickOnCheckout();
+        sauceProuctPagePage.fillFormDetails();
+        sauceProuctPagePage.getCartText();
 
 
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.id("back-to-products")))) ;
+        sauceProuctPagePage.clickonFinish();
 
 
 
 
 
     }
-    @After
-    public void quit(){
-        driver.quit();
-    }
+
 
 
 }
-
