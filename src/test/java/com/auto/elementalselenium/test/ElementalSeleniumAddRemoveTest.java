@@ -34,9 +34,8 @@ public class ElementalSeleniumAddRemoveTest {
   public void addRemoveTest(){
 
     basePage.getUrl();
-      basePage.takeScreenShot("removettest");
-      basePage.test.log(LogStatus.INFO, basePage.test.addScreenCapture("./removettest.jpg"));
     basePage.clickOnElementAddRemoveElements();
+    basePage.takeScreenShot("removettest");
 
   }
 

@@ -3,6 +3,7 @@ package com.auto.elementalselenium;
 import com.auto.report.ExtentReportManager;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -81,11 +82,18 @@ public class ElementalSeleniumBasePage {
 
             FileHandler.copy(srcFile, dest);
 
-
+            test.log(LogStatus.INFO, test.addScreenCapture("./"+fileName+".jpg"));
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
     }
+
+
+
+
+
+
+
 }
