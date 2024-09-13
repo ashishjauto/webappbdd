@@ -4,12 +4,13 @@ import com.auto.elementalselenium.ElementalSeleniumBasePage;
 import com.auto.saucelab.page.browser.BrowserObject;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.Random;
 
 import static com.auto.elementalselenium.ElementalSeleniumBasePage.extent;
 
@@ -31,13 +32,30 @@ public class ElementalSeleniumAddRemoveTest {
   }
 
   @Test
-  public void addRemoveTest(){
+  public void tc1_addRemoveTest(){
 
     basePage.getUrl();
+
     basePage.clickOnElementAddRemoveElements();
-    basePage.takeScreenShot("removettest");
+
+
+      for (int i = 0; i < new Random().nextInt(0,10); i++) {
+        basePage.clickonAddElementButton();
+      }
+    basePage.takeScreenShot("tc1_addRemoveTest");
 
   }
+
+    @Test
+    public void tc2_addRemoveTest(){
+
+
+
+        basePage.clickonDeleteButton();
+       basePage.takeScreenShot("tc2_addRemoveTest");
+
+    }
+
 
 
 

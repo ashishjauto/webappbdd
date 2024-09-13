@@ -15,10 +15,6 @@ public class ExtentReportManager {
     private ExtentReportManager(){}
 
 
-    /*************************************************************************
-     * Method description:
-     * Initiate Report
-     *************************************************************************/
 
     public synchronized static final ExtentReports initReporter(String name, String env, String app, String browser){
         String key = String.format("%s_%s_%s_%s",name, env, app, browser);

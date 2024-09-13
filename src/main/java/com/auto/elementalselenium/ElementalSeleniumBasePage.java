@@ -4,10 +4,7 @@ import com.auto.report.ExtentReportManager;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 public class ElementalSeleniumBasePage {
 
@@ -28,6 +26,12 @@ public class ElementalSeleniumBasePage {
     private String  elementalSeleniumURL="https://the-internet.herokuapp.com/";
     @FindBy(xpath = "//*[contains(text(),'Add/Remove Elements')]")
     WebElement addRemoveElements;
+    @FindBy(xpath = "//button[contains(text(),'Add Element')]")
+    WebElement addRemoveEelementButton;
+    @FindBy(xpath = "//button[contains(text(),'Delete')]")
+    WebElement deleteEelementButton;
+
+
     public ElementalSeleniumBasePage(WebDriver driver) {
 
 
@@ -91,9 +95,19 @@ public class ElementalSeleniumBasePage {
     }
 
 
+    public void clickonAddElementButton() {
+        addRemoveEelementButton.click();
+    }
+
+    public void clickonDeleteButton() {
 
 
 
+        List<WebElement> elementList=driver.findElements(By.xpath("//button[contains(text(),'Delete')]"));
 
 
+
+          elementList.forEach(webElement -> webElement.click()  );
+
+    }
 }
