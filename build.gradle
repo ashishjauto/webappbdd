@@ -18,7 +18,9 @@ dependencies {
     implementation 'io.cucumber:cucumber-plugin:7.18.1'
     testImplementation 'io.cucumber:cucumber-junit:7.18.1'
 
-
+//testng
+    testImplementation 'org.testng:testng:7.10.2'
+    implementation  ( "com.relevantcodes:extentreports:2.41.1")
 
 //  selenium jars
     implementation 'org.seleniumhq.selenium:selenium-java:4.24.0'

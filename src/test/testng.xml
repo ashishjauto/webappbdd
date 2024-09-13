@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="elementalselenium"><!--parallel="classes" thread-count="5"-->
+    <parameter name="env" value="preprod"/>    <!--Values are: dev,devcan, soak, preprod, prod-->
+    <test name="elementalselenium" preserve-order="true">
+        <parameter name="browser" value="chrome"/>  <!--Values are: chrome, firefox, firefox-->
+        <classes>
+            <class name="com.auto.elementalselenium.test.ElementalSeleniumAddRemoveTest"/>
+            <class name="com.auto.elementalselenium.test.ElementalSeleniumCheckBoxesTest"/>
+
+        </classes>
+    </test>
+
+</suite>
