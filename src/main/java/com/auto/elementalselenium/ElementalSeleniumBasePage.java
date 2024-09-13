@@ -28,8 +28,12 @@ public class ElementalSeleniumBasePage {
     WebElement addRemoveElements;
     @FindBy(xpath = "//button[contains(text(),'Add Element')]")
     WebElement addRemoveEelementButton;
-    @FindBy(xpath = "//button[contains(text(),'Delete')]")
-    WebElement deleteEelementButton;
+    @FindBy(linkText = "Checkboxes")
+    WebElement checkBoxLink;
+    @FindBy(xpath = "//input[@type ='checkbox']")
+    WebElement inputcheckBoxes;
+
+
 
 
     public ElementalSeleniumBasePage(WebDriver driver) {
@@ -43,12 +47,20 @@ public class ElementalSeleniumBasePage {
     }
 
     public void clickOnElementAddRemoveElements(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(driver1 -> ExpectedConditions.visibilityOf(addRemoveElements));
+
+        waitForVisiblityofWebElement(addRemoveElements);
 
         addRemoveElements.click();
 
     }
+
+
+    public void waitForVisiblityofWebElement(WebElement element){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(driver1 -> ExpectedConditions.visibilityOf(element));
+    }
+
 
 
     public void getUrl() {
@@ -65,7 +77,7 @@ public class ElementalSeleniumBasePage {
     }
     public void quitDriver() {
 
-        driver.quit();
+        driver.close();
 
 
     }
@@ -108,6 +120,20 @@ public class ElementalSeleniumBasePage {
 
 
           elementList.forEach(webElement -> webElement.click()  );
+
+    }
+
+    public void clickonCheckBoxes() {
+
+        waitForVisiblityofWebElement(checkBoxLink);
+        checkBoxLink.click();
+    }
+
+    public void clickonCheckBox() {
+        List<WebElement> elementList=driver.findElements(By.xpath("//input[@type ='checkbox']"));
+           waitForVisiblityofWebElement(elementList.get(0));
+           elementList.forEach(element->element.click());
+
 
     }
 }

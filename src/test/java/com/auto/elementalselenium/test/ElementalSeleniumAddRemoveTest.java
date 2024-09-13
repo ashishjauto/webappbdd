@@ -5,10 +5,7 @@ import com.auto.saucelab.page.browser.BrowserObject;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.Random;
 
@@ -20,7 +17,7 @@ public class ElementalSeleniumAddRemoveTest {
   ElementalSeleniumBasePage basePage ;
   WebDriver driver;
 
-  @BeforeTest
+  @BeforeClass
   public void setupAll(){
 
 
@@ -72,11 +69,11 @@ public class ElementalSeleniumAddRemoveTest {
       extent.endTest(basePage.test);
 
   }
-  @AfterTest
+  @AfterClass
   public void closeAll(){
 
     basePage.afterClass();
-
+      BrowserObject.tearDown();
   }
 
 
